@@ -232,7 +232,7 @@ spec:
       {{- end }}
 ---
 {{- end }}
-{{- if or $.Values.elasticsearch.enabled $.Values.elasticsearch.external }}
+{{- if and $.Values.elasticsearch.enabled (not (and $.Values.elasticsearch.awsRequestSigning $.Values.elasticsearch.awsRequestSigning.enabled)) }}
 apiVersion: batch/v1
 kind: Job
 metadata:

@@ -1,0 +1,23 @@
+serviceAccount:
+  extraAnnotations:
+    eks.amazonaws.com/role-arn: ""
+
+server:
+  config:
+    persistence:
+      default:
+        sql:
+          authPlugin:
+            plugin: rds-iam-auth
+
+      visibility:
+        sql:
+          authPlugin:
+            plugin: rds-iam-auth
+
+elasticsearch:
+  scheme: https
+  awsRequestSigning:
+    enabled: true
+    region: us-east-1 
+    credentialProvider: aws-sdk-default
